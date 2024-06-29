@@ -31,19 +31,15 @@ function LocationPicker() {
       );
       return false;
     }
-
     return true;
   }
 
   async function getLocationHandler() {
     const hasPermission = await verifyPermissions();
-
     if (!hasPermission) {
       return;
     }
-
     const location = await getCurrentPositionAsync();
-    console.log(location);
     setPickedLocation({
       lat: location.coords.latitude,
       lng: location.coords.longitude,
@@ -52,7 +48,6 @@ function LocationPicker() {
   function pickOnMapHandler() {}
 
   let locationPreview = <Text>No location picked yet.</Text>;
-
   if (pickedLocation) {
     locationPreview = (
       <Image
@@ -83,7 +78,6 @@ function LocationPicker() {
 }
 
 export default LocationPicker;
-
 const styles = StyleSheet.create({
   mapPreview: {
     marginVertical: 8,
@@ -93,6 +87,7 @@ const styles = StyleSheet.create({
     height: 200,
     justifyContent: "center",
     alignItems: "center",
+    overflow: "hidden",
   },
   actions: {
     flexDirection: "row",
